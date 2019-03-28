@@ -1,0 +1,16 @@
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: '127.0.0.1',
+  port: 3306,
+  user: 'nodoone',
+  password: 'nododb',
+  database: 'nodoone'
+});
+
+connection.connect(function(err){
+  if(err) return console.log(err);
+  console.log('Conectou ao banco de dados');
+})
+
+global.db = connection;

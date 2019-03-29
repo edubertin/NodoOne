@@ -37,6 +37,8 @@
           <th scope="col">#</th>
           <th scope="col">Projeto</th>
           <th scope="col">Descrição</th>
+          <th scope="col">Criador</th>
+          <th scope="col">Linguagem</th>
           <th scope="col">Data</th>
           <th scope="col">Link</th>
         </tr>
@@ -46,12 +48,15 @@
           results[i].data = results[i].data.toString().slice(3, -30);
            %>
         <tr>
-          <th scope="row"><%= results[i].id %></th>
+          <td id="imgp"><img src="<%= results[i].pimg %>" class="img-thumbnail"></td>"
           <td><%= results[i].pnome %></td>
           <td><%= results[i].pdesc %></td>
+          <td><%= results[i].dnome %></td>
+          <td><%= results[i].linguagem %></td>
           <td type="date"><%= results[i].data %></td>
           <td>
             <a href="<%= results[i].plink %>" class="btn btn-outline-light btn-sm" role="button">Download</a>
+            <a href="/proj/del/<%= results[i].id %>" class="btn btn-outline-light btn-sm" role="button">Delete</a>
           </td>
         </tr>
         <% } %>

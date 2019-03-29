@@ -51,3 +51,5 @@ animation-iteration-count: infinite;
 animation-duration: 8s;
 animation-direction: alternate;
 }
+
+#imgp{ height: 60px; width:60px; }

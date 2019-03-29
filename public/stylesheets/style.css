@@ -10,6 +10,7 @@ a {
   color: #00B7FF;
 }
 
+
 html{
   overflow-y: scroll;
 }
@@ -53,3 +54,10 @@ animation-direction: alternate;
 }
 
 #imgp{ height: 60px; width:60px; }
+
+
+#formi{
+margin:5px;
+width:400px;
+
+}

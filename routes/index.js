@@ -6,10 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'NodoOne' });
 });
 
-
 router.get('/sobre', function(req, res, next) {
   res.render('sobre', { title: 'NodoOne - Sobre' });
 });
-
 
 module.exports = router;

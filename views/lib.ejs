@@ -23,13 +23,11 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-
     <% include ../views/layouttopo %>
     <% include ../views/layoutmenu %>
     <% for(i = 0; i< results.length; i++) { %>
-      <h2><%= results[i].ldesc %><h2>
+    <h2><%= results[i].ldesc %><h2>
     <% } %>
-
 
     <!-- Script js jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

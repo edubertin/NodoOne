@@ -65,8 +65,89 @@
     <% if(results == '') { %>
     <div class="bg-warning" style="text-align:center"><h1> Sem registros </h1></div>
     <%}%>
-</br>
-    <p></p>
+
+<div class="bg-dark">
+<% if(results != '' && !lang) { %>
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center ">
+
+      <% if(page == 1) { %>
+        <li class="page-item disabled ">
+        <span class="page-link">Anterior</span>
+        </li>
+        <% for(i=1; i < 4; i++) { %>
+          <li class="page-item <% if(page == (page-1)+i) { %> active <%}%>
+                               <% if(!results[4] && i>=2) { %> disabled <%}%> ">
+            <span class="page-link">
+              <a href="/proj/?page=<%= (page-1)+i %>"><%= (page-1)+i %> </a><span class="sr-only">(current)</span>
+            </span>
+          </li>
+      <%}} else {%>
+        <li class="page-item">
+          <span class="page-link"><a href="/proj/?page=<%= page-1 %>">Anterior</a></span>
+        </li>
+        <% for(i=0; i < 3; i++) { %>
+          <li class="page-item <% if(page == (page-1)+i) { %> active <%}%>
+                               <% if(!results[4] && i==2) { %> disabled <%}%> ">
+            <span class="page-link">
+              <a href="/proj/?page=<%= (page-1)+i %>"><%= (page-1)+i %> </a><span class="sr-only">(current)</span>
+            </span>
+          </li>
+      <%}}%>
+      <% if(results[4]){ %>
+        <li class="page-item ">
+          <% var next =  parseInt(page); next++; %>
+          <a class="page-link" href="/proj/?page=<%= next %>">Next</a>
+        </li>
+          <%} else {%>
+        <li class="page-item disabled ">
+          <span class="page-link">Próximo</span>
+        </li>
+      <%}%>
+    </ul>
+</nav>
+<%}%>
+
+<% if(results != '' && lang) { %>
+      <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+          <% if(page == 1) { %>
+            <li class="page-item disabled">
+              <span class="page-link">Anterior</span>
+            </li>
+            <% for(i=1; i < 4; i++) { %>
+            <li class="page-item <% if(page == (page-1)+i) { %> active <%}%>
+                                 <% if(!results[4] && i>=2) { %> disabled <%}%>">
+              <span class="page-link">
+              <a href="/proj/?lang=<%= lang %>&page=<%= (page-1)+i %>"><%= (page-1)+i %> </a><span class="sr-only">(current)</span>
+              </span>
+            </li>
+          <%}} else {%>
+            <li class="page-item">
+              <span class="page-link"><a href="/proj/?lang=<%= lang %>&page=<%= page-1 %>">Anterior</a></span>
+            </li>
+            <% for(i=0; i < 3; i++) { %>
+            <li class="page-item <% if(page == (page-1)+i) { %> active <%}%>
+                      <% if(!results[4] && i==2) { %> disabled <%}%> ">
+              <span class="page-link">
+              <a href="/proj/?lang=<%= lang %>&page=<%= (page-1)+i %>"><%= (page-1)+i %> </a><span class="sr-only">(current)</span>
+              </span>
+            </li>
+            <%}}%>
+            <% if(results[4]){ %>
+              <li class="page-item ">
+                <% var next =  parseInt(page); next++; %>
+                <a class="page-link" href="/proj/?lang=<%= lang %>&page=<%= next %>">Next</a>
+              </li>
+                <%} else {%>
+              <li class="page-item disabled ">
+                <span class="page-link">Próximo</span>
+              </li>
+            <%}%>
+    </ul>
+  </nav>
+<%}%>
+</div>
     <% include ../views/rodape %>
 
     <!-- Script js jquery -->

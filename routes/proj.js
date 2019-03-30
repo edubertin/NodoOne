@@ -5,31 +5,37 @@ var db = require('../database/db.connect.js');
 /* Get inicial, retorna a view proj.ejs */
 router.get('/', function(req, res, next) {
 
+    if(req.query.lang){
+        var query = "SELECT * FROM projetos WHERE linguagem = ? LIMIT 5 OFFSET ?"
+        var lang  = req.query.lang;
+        var page = (parseInt(req.query.page) - 1) * 5 ;
+        var table = [lang, page];
 
-  if(req.query.lang){
-    var query = "SELECT * FROM projetos WHERE linguagem = ? LIMIT 10 OFFSET ?"
-    var lang  = req.query.lang;
-    var page = (parseInt(req.query.page) - 1) * 5 ;
-    var table = [lang, page];
+        query = global.db.format(query, table);
 
-    query = global.db.format(query, table);
-    global.db.query(query, function(err, results) {
-      if (err) throw err;
-      res.render('proj', { title: 'Projetos', results: results });
+        global.db.query(query, function(err, results) {
+          if (err) throw err;
+          res.render('proj', { title: 'Projetos', results: results, page: req.query.page, lang:req.query.lang });
+        });
       return;
-    });
-  }
+    }
 
-  if(!req.query.lang){
-    global.db.query("SELECT * FROM projetos", function(err, results, fields) {
-      if (err) throw err;
-      res.render('proj', { title: 'Projetos', results: results });
+    if(req.query.page){
+        var page = (parseInt(req.query.page) - 1) * 5 ;
+        global.db.query("SELECT * FROM projetos LIMIT 5 OFFSET ?", page, function(err, results, fields) {
+          if (err) throw err;
+          res.render('proj', { title: 'Projetos', results: results, page:req.query.page, lang:req.query.lang });
+        });
       return;
-    });
-  }
+    }
 
+    global.db.query("SELECT * FROM projetos LIMIT 5 OFFSET 1", function(err, results, fields) {
+      if (err) throw err;
+      res.render('proj', { title: 'Projetos', results: results, page:1, lang:req.query.lang });
+    });
+
+  return;
 });
-
 
 /* Get para o formulario, retorna a view projadd.ejs */
 router.get('/add', function(req, res, next) {
@@ -83,8 +89,8 @@ router.post('/add', function(req, res) {
    global.db.query(sql, projadd, function(err, results, fields) {
    if (err) throw err;
    res.redirect('/proj');
-   return;
    });
+  return;
 });
 
 /* Get para deletar o projeto, retorna a view proj.ejs */
@@ -94,8 +100,8 @@ router.get('/del/:id', function(req, res) {
   global.db.query(sql, projid, function(err, results, fields) {
     if (err) throw err;
     res.redirect('/proj/');
-    return;
   });
+ return;
 });
 
 module.exports = router;

@@ -61,7 +61,11 @@
         <% } %>
       </tbody>
     </table>
-
+  </br>
+    <% if(results == '') { %>
+    <div class="bg-warning" style="text-align:center"><h1> Sem registros </h1></div>
+    <%}%>
+</br>
     <p></p>
     <% include ../views/rodape %>
 

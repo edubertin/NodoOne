@@ -26,9 +26,9 @@
   <body>
     <% include ../views/layouttopo %>
     <% include ../views/layoutmenu %>
-<p></p>
-<div style="text-align:right" class="bg-dark">
-  <a href="/proj/add" class="btn btn-outline-light" role="button">Adicionar Projetos</a>
+
+<div style="text-align:right" class="bg-light rounded">
+  <a href="/proj/add" class="btn btn-outline-primary" role="button">Adicionar Projetos</a>
 </div>
     <table class="table table-hover table-dark table-responsive{-sm}">
       <thead>
@@ -61,12 +61,12 @@
         <% } %>
       </tbody>
     </table>
-  </br>
+
     <% if(results == '') { %>
     <div class="bg-warning" style="text-align:center"><h1> Sem registros </h1></div>
     <%}%>
 
-<div class="bg-dark">
+<div class="bg-light">
 <% if(results != '' && !lang) { %>
   <nav aria-label="...">
     <ul class="pagination justify-content-center ">
@@ -97,7 +97,7 @@
       <% if(results[4]){ %>
         <li class="page-item ">
           <% var next =  parseInt(page); next++; %>
-          <a class="page-link" href="/proj/?page=<%= next %>">Next</a>
+          <a class="page-link" href="/proj/?page=<%= next %>">Próximo</a>
         </li>
           <%} else {%>
         <li class="page-item disabled ">
@@ -137,7 +137,7 @@
             <% if(results[4]){ %>
               <li class="page-item ">
                 <% var next =  parseInt(page); next++; %>
-                <a class="page-link" href="/proj/?lang=<%= lang %>&page=<%= next %>">Next</a>
+                <a class="page-link" href="/proj/?lang=<%= lang %>&page=<%= next %>">Próximo</a>
               </li>
                 <%} else {%>
               <li class="page-item disabled ">

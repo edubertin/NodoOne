@@ -26,13 +26,16 @@
     <% include ../views/layouttopo %>
     <% include ../views/layoutmenu %>
 
+    <p></p>
+      <% if(erro != '0') {  %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center">
+        <strong> <%= erro %> </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+  </div>
+      <% } %>
 
-    <% if(erro != '0') {  %>
-      <p></p>
-      <div class="bg-warning" style="text-align:center"><h1> Insira o <%= erro %> <h1> </div>
-    <% } %>
-
-  </br>
   <div class="row justify-content-around bg-dark" style="margin:1px;height:100%;">
   <div style="position:relative; margin-top:40px;"><img src="/images/signin.png" class="float-left"></div>
 

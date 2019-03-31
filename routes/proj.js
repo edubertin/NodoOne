@@ -52,36 +52,36 @@ router.post('/add', function(req, res) {
   req.body.pimg = '/images/lpic/'+req.body.linguagem+'.jpg';
 
     if(!req.body.pnome){
-      res.render('projadd', { title: 'Projetos - Adicionar Projetos',
-                              erro:'Nome do Projeto',
+      res.render('projadd', { title: 'Projetos - Adicionar Projetos.',
+                              erro:'Insira o Nome do Projeto.',
                               results: req.body });
       return;
     }
 
     if(!req.body.pdesc){
-      res.render('projadd', { title: 'Projetos - Adicionar Projetos',
-                              erro:'Descrição do Projeto',
+      res.render('projadd', { title: 'Projetos - Adicionar Projetos.',
+                              erro:'Insira a Descrição do Projeto.',
                               results: req.body });
       return;
     }
 
     if(!req.body.plink){
-      res.render('projadd', { title: 'Projetos - Adicionar Projetos',
-                              erro:'Github do Projeto',
+      res.render('projadd', { title: 'Projetos - Adicionar Projetos.',
+                              erro:'Insira o link do Github do Projeto.',
                               results: req.body });
       return;
     }
 
     if(!req.body.dnome){
-      res.render('projadd', { title: 'Projetos - Adicionar Projetos',
-                              erro:'Nome do Desenvolvedor',
+      res.render('projadd', { title: 'Projetos - Adicionar Projetos.',
+                              erro:'Insira o Nome do Desenvolvedor.',
                               results: req.body });
       return;
     }
 
     if(req.body.linguagem  == 'Escolha'){
-      res.render('projadd', { title: 'Projetos - Adicionar Projetos',
-                              erro:'a Linguagem',
+      res.render('projadd', { title: 'Projetos - Adicionar Projetos.',
+                              erro:'Insira a Linguagem usada.',
                               results: req.body });
       return;
     }

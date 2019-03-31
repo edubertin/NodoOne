@@ -25,15 +25,24 @@
   <body>
     <% include ../views/layouttopo %>
     <% include ../views/layoutmenu %>
-    </br>
+  <p></p>
+    <% if(erro != '0') {  %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center">
+      <strong> <%= erro %> </strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+    <% } %>
+
 <div class="container bg-dark justify-content-center" style="max-width:100%;">
     <form action="/users" method="POST" class="form-signin bg-dark rounded" style="color:white;max-width:300px;display: block;margin-left: auto;margin-right: auto;">
     </br>
       <h1 class="h3 mb-3 font-weight-normal">Logar</h1>
       <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+      <input type="email" name="email" value="<% if(results != 'undifinied'){%><%= results.email %><%}%>" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
       <label for="inputPassword" class="sr-only">Senha</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+      <input type="password" value="<% if(results != 'undifinied'){%><%= results.password %><%}%>" name="password" id="inputPassword" class="form-control" placeholder="Senha" required>
       </br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
       </br>

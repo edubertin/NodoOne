@@ -3,13 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projRouter = require('./routes/proj');
 var libRouter = require('./routes/lib');
+
 
 var app = express();
 
@@ -25,10 +26,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/proj', projRouter);
 app.use('/lib', libRouter);
+
 
 
 // catch 404 and forward to error handler
